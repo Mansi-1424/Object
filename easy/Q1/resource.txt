@@ -1,0 +1,39 @@
+
+
+##  Font Properties
+- font-family: Arial, Helvetica, sans-serif
+- font-size: 14px
+- font-size: 16px
+- font-weight: bold
+
+---
+## Text Properties
+- text-align: center
+- color
+- font-weight
+- strong tag usage
+- text-transform: none (default)
+- line-height: normal (default)
+
+---
+
+## CSS Colors Used
+
+### Background Colors
+- #ffffff
+- linear-gradient(135deg, #667eea, #764ba2)
+
+### Text Colors
+- #333
+- #555
+- red
+- green
+- white
+
+### Button & Border Colors
+- #667eea
+- #5a67d8
+- #ccc
+
+### Shadow Color
+- rgba(0, 0, 0, 0.2)
