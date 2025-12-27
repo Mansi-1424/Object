@@ -1,0 +1,124 @@
+:root {
+  --bg-main: #020617;
+  --bg-card: #020617;
+  --clr-primary: #818cf8;
+  --clr-accent: #4ade80;
+  --clr-error: #f87171;
+  --clr-text: #e5e7eb;
+  --clr-muted: #94a3b8;
+  --border: rgba(255, 255, 255, 0.12);
+  --radius-lg: 22px;
+  --radius-md: 14px;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, #312e81, transparent 40%),
+    var(--bg-main);
+  display: grid;
+  place-items: center;
+  color: var(--clr-text);
+}
+
+.payroll-app {
+  width: 480px;
+  padding: 32px;
+  background: rgba(2, 6, 23, 0.95);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+}
+
+h1 {
+  margin: 0 0 24px;
+  text-align: center;
+  background: linear-gradient(
+    90deg,
+    var(--clr-primary),
+    #c7d2fe
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+}
+
+input {
+  padding: 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: #020617;
+  color: var(--clr-text);
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--clr-primary);
+}
+
+button {
+  padding: 14px;
+  border-radius: var(--radius-md);
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(
+    135deg,
+    var(--clr-primary),
+    #6366f1
+  );
+  color: #020617;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+}
+
+.employee-list {
+  margin-top: 24px;
+  display: grid;
+  gap: 14px;
+}
+
+.employee-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  border: 1px solid var(--border);
+}
+
+.employee-card h3 {
+  margin: 0 0 10px;
+}
+
+.salary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+.total {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: var(--clr-accent);
+}
+
+#status {
+  margin-top: 16px;
+  min-height: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Product Price Validator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="product-app">
+    <h1>🛒 Product Pricing Panel</h1>
+
+    <div class="product-card">
+
+        <div class="image-wrapper">
+    <img src="./air-fryer.png" alt="Air Fryer" />
+  </div>
+
+      <p class="label">Product</p>
+      <h2 id="productName">Air Fryer</h2>
+
+      <p class="label">Current Price</p>
+      <h3 id="productPrice">₹0</h3>
+    </div>
+
+    <div class="controls">
+      <input
+        type="number"
+        id="priceInput"
+        placeholder="Set new price"
+      />
+      <button id="updateBtn">Update Price</button>
+    </div>
+
+    <p id="statusMessage"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

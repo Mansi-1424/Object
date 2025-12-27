@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compensation Intelligence System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="system">
+        <header>
+            <h1>Compensation Intelligence System</h1>
+            <p>Dynamic earnings calculation engine</p>
+        </header>
+
+        <section class="input-zone">
+            <div class="field">
+                <label>Base Earnings</label>
+                <input type="number" id="base" placeholder="Enter base amount">
+            </div>
+
+            <div class="field">
+                <label>Performance Addition</label>
+                <input type="number" id="bonus" placeholder="Enter bonus amount">
+            </div>
+
+            <div class="field">
+                <label>Statutory Deduction</label>
+                <input type="number" id="tax" placeholder="Enter deduction amount">
+            </div>
+
+            <button id="process">Generate Final Amount</button>
+        </section>
+
+        <section class="result-panel" id="result">
+            Waiting for input...
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

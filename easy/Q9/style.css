@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", system-ui, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.console {
+    width: 720px;
+    padding: 40px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(28px);
+    box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+    color: white;
+    animation: enter 0.9s ease;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+header h1 {
+    font-size: 30px;
+    margin-bottom: 6px;
+}
+
+header p {
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+.panel {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.identity-card {
+    flex: 1;
+    padding: 25px;
+    border-radius: 22px;
+    background: rgba(0,0,0,0.35);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25);
+}
+
+.identity-card h2 {
+    margin-bottom: 10px;
+}
+
+#identity {
+    font-size: 18px;
+    font-weight: 600;
+    color: #43cea2;
+}
+
+button {
+    padding: 18px 26px;
+    border-radius: 18px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background: linear-gradient(135deg, #ff512f, #dd2476);
+    color: white;
+    transition: all 0.35s ease;
+}
+
+button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+}
+
+.status {
+    padding: 22px;
+    border-radius: 20px;
+    background: rgba(0,0,0,0.3);
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 90px;
+}
+
+@keyframes enter {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
