@@ -1,46 +1,51 @@
-// Sealed internal mark
-const hiddenMark = Symbol("sealed");
+"use strict";
 
-// Identity constructor
-function LedgerEntry(label) {
-  this.label = label;
-  this[hiddenMark] = crypto.randomUUID();
-}
-
-// Controlled internal access
-LedgerEntry.prototype.verify = function () {
-  return this[hiddenMark];
-};
-
-// DOM logic
-const input = document.querySelector("input");
-const button = document.querySelector("button");
-const list = document.querySelector(".records");
-
-const archive = [];
-
-button.addEventListener("click", () => {
-  const name = input.value.trim();
-  if (!name) return;
-
-  const entry = new LedgerEntry(name);
-  archive.push(entry);
-
-  const item = document.createElement("li");
-  item.innerHTML = `
-    <span>${entry.label}</span>
-    <span>✔︎ Sealed</span>
-  `;
-
-  list.appendChild(item);
-  input.value = "";
+// Immutable configuration object
+const appConfig = Object.freeze({
+  appName: "SecurePay",
+  version: "1.0.0",
+  apiUrl: "https://api.securepay.com"
 });
 
-/*
-Proof of secrecy (dev console only):
+// DOM elements
+const appNameEl = document.getElementById("appName");
+const versionEl = document.getElementById("version");
+const apiUrlEl = document.getElementById("apiUrl");
+const statusEl = document.getElementById("status");
+const modal = document.getElementById("configModal");
+const closeModalBtn = document.getElementById("closeModal");
 
-Object.keys(entry) → ["label"]
-JSON.stringify(entry) → {"label":"..."}
-for (let k in entry) → label only
-entry.verify() → hidden internal mark
-*/
+
+// Initial render
+function renderConfig() {
+  appNameEl.textContent = appConfig.appName;
+  versionEl.textContent = appConfig.version;
+  apiUrlEl.textContent = appConfig.apiUrl;
+}
+
+renderConfig();
+
+document.getElementById("attemptBtn").addEventListener("click", () => {
+  try {
+    appConfig.appName = document.getElementById("nameInput").value;
+    appConfig.version = document.getElementById("versionInput").value;
+    appConfig.apiUrl = document.getElementById("apiInput").value;
+
+    appConfig.newProperty = "Hacked";
+
+    statusEl.textContent = "❌ Configuration change blocked";
+    statusEl.style.color = "var(--clr-error)";
+  } catch (err) {
+    statusEl.textContent = `❌ ${err.message}`;
+    statusEl.style.color = "var(--clr-error)";
+  }
+
+  // SHOW POPUP
+  modal.classList.remove("hidden");
+
+  renderConfig();
+});
+
+closeModalBtn.addEventListener("click", () => {
+  modal.classList.add("hidden");
+});

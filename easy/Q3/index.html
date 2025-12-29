@@ -2,12 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Bank Account Details</title>
+    <title>Bank App</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-    <div class="bank-card">
+    <!-- Login Card -->
+    <div class="bank-card" id="loginCard">
+        <h2>Login</h2>
+
+        <input type="text" id="username" placeholder="Enter Username">
+        <input type="password" id="password" placeholder="Enter Password">
+
+        <button id="loginBtn">Login</button>
+        <p id="loginMsg"></p>
+    </div>
+
+    <!-- Bank Details Card -->
+    <div class="bank-card hidden" id="bankCard">
         <h2>My Bank Account</h2>
 
         <div class="details">

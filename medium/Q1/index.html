@@ -2,24 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The Obsidian Ledger</title>
-  <link rel="stylesheet" href="./style.css">
+  <title>Application Configuration</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="vault">
-    <section class="panel">
-      <h1>The Obsidian Ledger</h1>
-      <p class="subtitle">Names are visible. Marks are sealed.</p>
 
-      <div class="entry">
-        <input type="text" placeholder="Enter a name" />
-        <button>Seal Entry</button>
+  <div class="config-app">
+    <h1>⚙️ App Configuration Panel</h1>
+
+    <div class="config-card">
+      <div class="row">
+        <span>App Name</span>
+        <strong id="appName"></strong>
       </div>
 
-      <ul class="records"></ul>
-    </section>
-  </main>
+      <div class="row">
+        <span>Version</span>
+        <strong id="version"></strong>
+      </div>
 
-  <script src="./script.js"></script>
+      <div class="row">
+        <span>API URL</span>
+        <strong id="apiUrl"></strong>
+      </div>
+    </div>
+
+    <div class="controls">
+      <input id="nameInput" placeholder="app name" />
+      <input id="versionInput" placeholder=" version" />
+      <input id="apiInput" placeholder="API URL" />
+      <button id="attemptBtn">Attempt Change</button>
+    </div>
+
+    <p id="status"></p>
+  </div>
+
+<!-- POPUP MODAL -->
+<div class="modal hidden" id="configModal">
+  <div class="modal-content">
+    <h2>⚠️ Configuration Locked</h2>
+    <p>
+      This application configuration is <strong>immutable</strong>.
+      <br />
+      Changes are blocked to ensure system stability.
+    </p>
+    <button id="closeModal">Understood</button>
+  </div>
+</div>
+
+
+
+
+
+  <script src="script.js"></script>
 </body>
 </html>
