@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Authentication Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h1>SecureAuth<span class="logo-dot">.</span>Pro</h1>
+                <div class="version-badge">v2.1</div>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-value" id="totalUsers">0</span>
+                    <span class="stat-label">Total Users</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="activeUsers">0</span>
+                    <span class="stat-label">Active Now</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="left-panel">
+                <div class="card form-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-user-plus"></i> Add New User</h2>
+                        <!-- <div class="card-subtitle">Create secure user profiles with role-based access</div> -->
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="input-label">
+                            <span class="label-text">Username</span>
+                            <span class="label-hint">min. 3 characters</span>
+                        </label>
+                        <div class="input-container">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="username" class="modern-input" placeholder="john_doe" autocomplete="off">
+                            <div class="input-underline"></div>
+                        </div>
+                        <div class="validation" id="usernameValidation"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="input-label">
+                            <span class="label-text">Access Role</span>
+                            <span class="label-hint">select from dropdown</span>
+                        </label>
+                        <div class="custom-select">
+                            <select id="role" class="role-select">
+                                <option value="" disabled selected>Select a role</option>
+                                <option value="Admin">👑 Admin</option>
+                                <option value="Manager">💼 Manager</option>
+                                <option value="Editor">✏️ Editor</option>
+                                <option value="Viewer">👁️ Viewer</option>
+                                <option value="Guest">🎫 Guest</option>
+                            </select>
+                            <div class="select-arrow">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="role-description" id="roleDescription"></div>
+                    </div>
+
+                    <button id="addUserBtn" class="gradient-button">
+                        <span class="btn-content">
+                            <i class="fas fa-plus-circle"></i>
+                            Create User Profile
+                        </span>
+                        <div class="btn-shine"></div>
+                    </button>
+
+                    <div class="form-footer">
+                        <div class="security-indicator"> <br>
+                            <i class="fas fa-lock"></i>
+                            <span>256-bit SSL Encryption</span>
+                        </div>
+                        <div class="password-strength">
+                            <div class="strength-bar"></div>
+                            <div class="strength-bar"></div>
+                            <div class="strength-bar"></div>
+                            <div class="strength-bar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card info-card">
+                    <h3><i class="fas fa-info-circle"></i> Role Permissions</h3>
+                    <div class="permissions-list">
+                        <div class="permission-item">
+                            <div class="permission-icon admin">👑</div>
+                            <div class="permission-details">
+                                <strong>Admin</strong>
+                                <span>Full system access</span>
+                            </div>
+                        </div>
+                        <div class="permission-item">
+                            <div class="permission-icon manager">💼</div>
+                            <div class="permission-details">
+                                <strong>Manager</strong>
+                                <span>Team management</span>
+                            </div>
+                        </div>
+                        <div class="permission-item">
+                            <div class="permission-icon editor">✏️</div>
+                            <div class="permission-details">
+                                <strong>Editor</strong>
+                                <span>Content modification</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="card users-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-users"></i> Active Users</h2>
+                        <div class="controls">
+                            <button class="icon-btn" id="refreshBtn" title="Refresh">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                            <button class="icon-btn" id="sortBtn" title="Sort">
+                                <i class="fas fa-sort-amount-down"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="users-list-header">
+                        <span>User Profile</span>
+                        <span>Role</span>
+                        <span>Status</span>
+                        <span>Actions</span>
+                    </div>
+
+                    <div id="usersContainer" class="users-list">
+                        <div class="empty-state">
+                            <div class="empty-icon">
+                                <i class="fas fa-user-slash"></i>
+                            </div>
+                            <h3>No Users Found</h3>
+                            <p>Add users to see them listed here</p>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="pagination">
+                            <button class="page-btn disabled">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <span class="page-info">Page 1 of 1</span>
+                            <button class="page-btn disabled">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="export-actions">
+                            <button class="text-btn">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>SecureAuth System</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#"><i class="fas fa-question-circle"></i> Help</a>
+                    <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#"><i class="fas fa-history"></i> Audit Log</a>
+                </div>
+                <div class="system-status">
+                    <div class="status-indicator active"></div>
+                    <span>System: Online</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

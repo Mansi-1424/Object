@@ -1,4 +1,4 @@
-# User Login – Object Literal & DOM Manipulation
+# User Login
 
 ##  Project Description
 This project demonstrates **JavaScript Object Fundamentals** using a simple
@@ -20,10 +20,6 @@ The application allows a user to:
 - Event Handling
 - Input Validation using Regex
 - Basic UI styling with CSS
-
----
-
-
 ---
 
 ##  Input Validation Rules

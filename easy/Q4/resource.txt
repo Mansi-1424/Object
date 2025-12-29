@@ -1,0 +1,71 @@
+UI & DESIGN RESOURCES
+
+--------------------------------
+FONT FAMILY
+--------------------------------
+Primary Font:
+- Segoe UI
+
+Fallback Fonts:
+- Sans-serif
+
+--------------------------------
+COLOR PALETTE
+--------------------------------
+Background Gradient:
+- Soft Blue: #667eea
+- Purple Violet: #764ba2
+
+Container Background:
+- White: #ffffff
+
+--------------------------------
+TEXT COLORS
+--------------------------------
+Primary Text:
+- Dark Gray: #333333
+
+Input Text:
+- Dark Gray / Black
+
+--------------------------------
+ACCENT COLORS
+--------------------------------
+Primary Accent:
+- Blue: #667eea
+
+Hover Accent:
+- Darker Blue: #5a67d8
+
+User Card Background:
+- Light Blue Tint: #f4f6ff
+
+--------------------------------
+TEXT PROPERTIES
+--------------------------------
+Headings:
+- Bold weight
+- Center aligned
+- Medium-large font size
+
+Input Text:
+- Medium font size
+- Clear and readable
+
+Button Text:
+- Medium size
+- Bold weight
+- High contrast
+
+User List Text:
+- Regular weight
+- Comfortable line spacing
+
+--------------------------------
+UI EFFECTS & ANIMATIONS
+--------------------------------
+- Fade-in animation on app load
+- Slide-up animation for newly added users
+- Button hover color transition
+- Soft shadow for container depth
+

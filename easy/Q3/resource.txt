@@ -65,10 +65,4 @@ Text Properties
   - Medium font size
   - Neutral color for readability
 
----
 
- UX Considerations
-- Clear separation between login and account views
-- Minimalistic design to avoid clutter
-- Visual feedback for user actions
-- Focus on simplicity and clarity
