@@ -1,0 +1,74 @@
+UI & Design Resources
+
+Font Family
+- Primary Font: Poppins
+- Fallback Fonts: Arial, sans-serif
+- Usage: Applied globally for a clean and modern look
+
+---
+
+ Color Palette
+- Primary Gradient:
+  - Dark Green: #1f4037
+  - Light Mint: #99f2c8
+
+- Button Gradient:
+  - Dark Green: #1f4037
+  - Accent Green: #2ecc71
+
+- Text Colors:
+  - Primary Text: #333333
+  - Heading Text: #1f4037
+  - Button Text: #ffffff
+
+- Background:
+  - Card Background: #ffffff
+  - Detail Box Background: #f3fdf8
+
+---
+
+ UI Components & Properties
+
+Container (Card)
+- Width: Medium fixed width
+- Padding: Spacious for readability
+- Border Radius: Rounded corners
+- Shadow: Soft drop shadow for depth
+- Alignment: Centered vertically and horizontally
+
+---
+
+ Buttons
+- Shape: Pill-shaped (rounded)
+- Hover Effect:
+  - Slight upward movement
+  - Shadow enhancement
+- Cursor: Pointer for better UX
+- Transition: Smooth animation effect
+
+---
+
+ Input Fields
+- Full width
+- Rounded edges
+- Light border
+- No outline on focus
+- Consistent spacing between inputs
+
+---
+
+Text Properties
+- Headings:
+  - Larger font size
+  - Bold appearance
+- Paragraph text:
+  - Medium font size
+  - Neutral color for readability
+
+---
+
+ UX Considerations
+- Clear separation between login and account views
+- Minimalistic design to avoid clutter
+- Visual feedback for user actions
+- Focus on simplicity and clarity
