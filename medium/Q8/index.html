@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Subscription Revenue Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="dashboard">
+    <div class="card input-card">
+      <div class="header">
+        <div class="header-icon">
+            <p>₹</p>
+    
+        </div>
+        <div>
+          <h1>Subscription Revenue Model</h1>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-top: 5px;">Calculate your SaaS revenue </p>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label><i class="fas fa-tag"></i> Base Price (₹)</label>
+        <div class="input-with-icon">
+          <i class="fas fa-rupee-sign"></i>
+          <input id="price" type="number" min="0" step="100" placeholder="e.g., 999" value="999">
+        </div>
+        <div class="input-range">
+          <span>0</span>
+          <input type="range" id="priceRange" min="0" max="5000" step="100" value="999">
+          <span class="range-value" id="priceValue">₹999</span>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label><i class="fas fa-percentage"></i> Discount (%)</label>
+        <div class="input-with-icon">
+          <i class="fas fa-percent"></i>
+          <input id="discount" type="number" min="0" max="50" placeholder="0-50" value="10">
+        </div>
+        <div class="input-range">
+          <span>0%</span>
+          <input type="range" id="discountRange" min="0" max="50" step="1" value="10">
+          <span class="range-value" id="discountValue">10%</span>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label><i class="fas fa-users"></i> Active Users</label>
+        <div class="input-with-icon">
+          <i class="fas fa-user-friends"></i>
+          <input id="users" type="number" min="1" placeholder="e.g., 100" value="100">
+        </div>
+        <div class="input-range">
+          <span>1</span>
+          <input type="range" id="usersRange" min="1" max="1000" step="1" value="100">
+          <span class="range-value" id="usersValue">100</span>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label><i class="fas fa-chart-line"></i> Billing Multiplier</label>
+        <div class="input-with-icon">
+          <i class="fas fa-calculator"></i>
+          <input id="multiplier" type="number" min="1" step="0.5" placeholder="e.g., 1.5" value="1.2">
+        </div>
+        <div class="input-range">
+          <span>1x</span>
+          <input type="range" id="multiplierRange" min="1" max="5" step="0.1" value="1.2">
+          <span class="range-value" id="multiplierValue">1.2x</span>
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button id="calculate">
+          <i class="fas fa-calculator"></i> Calculate Revenue
+        </button>
+        <button id="reset">
+          <i class="fas fa-redo"></i> Reset Values
+        </button>
+      </div>
+    </div>
+
+    <div class="card output-card">
+      <h2><i class="fas fa-chart-bar"></i> Revenue Analysis</h2>
+      
+      <div class="stats-card">
+        <div class="stats-box">
+          <div class="stats-icon"><i class="fas fa-calendar-day"></i></div>
+          <div class="stats-value rupee" id="monthlyRevenue">0</div>
+          <div class="stats-label">Monthly Revenue</div>
+        </div>
+        
+        <div class="stats-box">
+          <div class="stats-icon"><i class="fas fa-calendar-alt"></i></div>
+          <div class="stats-value rupee" id="annualRevenue">0</div>
+          <div class="stats-label">Annual Revenue</div>
+        </div>
+        
+        <div class="stats-box">
+          <div class="stats-icon"><i class="fas fa-user-check"></i></div>
+          <div class="stats-value" id="arpu">0</div>
+          <div class="stats-label">ARPU (₹)</div>
+        </div>
+        
+        <div class="stats-box">
+          <div class="stats-icon"><i class="fas fa-chart-pie"></i></div>
+          <div class="stats-value" id="profitMargin">0%</div>
+          <div class="stats-label">Profit Margin</div>
+        </div>
+      </div>
+
+      <div class="revenue-breakdown">
+        <h3>Revenue Breakdown</h3>
+        <div class="breakdown-item">
+          <div class="breakdown-label">
+            <i class="fas fa-money-bill-wave" style="color: var(--indian-orange);"></i>
+            <span>Base Revenue</span>
+          </div>
+          <div class="breakdown-value rupee" id="baseRevenue">0</div>
+        </div>
+        
+        <div class="breakdown-item">
+          <div class="breakdown-label">
+            <i class="fas fa-tag" style="color: var(--danger);"></i>
+            <span>Discount Applied</span>
+          </div>
+          <div class="breakdown-value rupee" id="discountAmount">0</div>
+        </div>
+        
+        <div class="breakdown-item">
+          <div class="breakdown-label">
+            <i class="fas fa-bolt" style="color: var(--accent);"></i>
+            <span>After Discount</span>
+          </div>
+          <div class="breakdown-value rupee" id="afterDiscount">0</div>
+        </div>
+        
+        <div class="breakdown-item">
+          <div class="breakdown-label">
+            <i class="fas fa-rocket" style="color: var(--indian-green);"></i>
+            <span>With Multiplier</span>
+          </div>
+          <div class="breakdown-value rupee" id="finalRevenue">0</div>
+        </div>
+      </div>
+
+      <div id="enterpriseStatus">
+        <div class="enterprise-badge enterprise-no" id="enterpriseBadge">
+          Standard Tier
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="grid-column: 1 / -1;">
+      <h2><i class="fas fa-chart-line"></i> Revenue Visualization & Tiers</h2>
+      
+      <div class="tier-indicator">
+        <div class="tier" id="tierStarter">
+          <h4>Starter</h4>
+          <div class="threshold">Up to ₹5L/year</div>
+        </div>
+        <div class="tier" id="tierGrowth">
+          <h4>Growth</h4>
+          <div class="threshold">₹5L - ₹25L/year</div>
+        </div>
+        <div class="tier" id="tierEnterprise">
+          <h4>Enterprise</h4>
+          <div class="threshold">₹25L+ /year</div>
+        </div>
+      </div>
+
+      <div class="visualization">
+        <div class="bar" id="barMonthly" style="height: 30%;">
+          <div class="bar-label">Monthly</div>
+        </div>
+        <div class="bar" id="barQuarterly" style="height: 50%;">
+          <div class="bar-label">Quarterly</div>
+        </div>
+        <div class="bar" id="barAnnual" style="height: 100%;">
+          <div class="bar-label">Annual</div>
+        </div>
+      </div>
+
+      <div class="history">
+        <h3><i class="fas fa-history"></i> Calculation History</h3>
+        <div id="historyList">
+          <!-- History items will be added here -->
+        </div>
+      </div>
+    </div>
+
+    <div class="error" id="errorMessage"></div>
+  </div>
+<script src="./script.js"></script>
+ </body>
+</html>

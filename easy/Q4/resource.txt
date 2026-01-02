@@ -61,11 +61,5 @@ User List Text:
 - Regular weight
 - Comfortable line spacing
 
---------------------------------
-UI EFFECTS & ANIMATIONS
---------------------------------
-- Fade-in animation on app load
-- Slide-up animation for newly added users
-- Button hover color transition
-- Soft shadow for container depth
+
 

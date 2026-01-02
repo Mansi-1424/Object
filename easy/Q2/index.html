@@ -3,18 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Product Details</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-
-    <div class="product-card">
-        <h2 id="productTitle">Product Title</h2>
-        <p class="price" id="productPrice">₹0</p>
-        <p class="stock" id="stockStatus">In Stock</p>
-
-        <button id="viewBtn">View Product</button>
+    <div class="container">
+        <h1 class="main-title">📦 Product Details Dashboard</h1>
+        
+        <div class="product-card" id="mainProduct">
+            <div class="product-badge">Featured</div>
+            <h2 id="productTitle">Product Title</h2>
+            <p class="price" id="productPrice">₹0</p>
+            <p class="stock" id="stockStatus">In Stock</p>
+            <div class="product-meta">
+                <span class="rating" id="productRating">★★★★☆</span>
+                <span class="category" id="productCategory">Electronics</span>
+            </div>
+            <button id="viewBtn" class="view-btn">View Product</button>
+        </div>
+        
+        <div class="details-section">
+            <h3>📊 Product Specifications</h3>
+            <div class="specs-grid" id="specsGrid">
+                <!-- Specifications will be added here -->
+            </div>
+        </div>
+        
+        <div class="related-products">
+            <h3>🛒 Related Products</h3>
+            <div class="products-grid" id="relatedProducts">
+                <!-- Related products will be added here -->
+            </div>
+        </div>
     </div>
     
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>

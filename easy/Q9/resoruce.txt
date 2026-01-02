@@ -1,0 +1,55 @@
+RESOURCE DETAILS – Authority Lock System
+
+----------------------------------------
+Font Family
+----------------------------------------
+Primary Font:
+- Inter
+- System UI fallback
+- Sans-serif
+
+----------------------------------------
+Color Palette
+----------------------------------------
+Background Gradient:
+- #141e30 (Deep Blue)
+- #243b55 (Steel Blue)
+
+Console Background:
+- rgba(255, 255, 255, 0.14)
+- Glassmorphism effect with blur
+
+Panel Backgrounds:
+- rgba(0, 0, 0, 0.35)
+- rgba(0, 0, 0, 0.3)
+
+----------------------------------------
+Accent Colors
+----------------------------------------
+Authority Highlight:
+- Green: #43cea2
+
+Action Button Gradient:
+- Red: #ff512f
+- Pink: #dd2476
+
+Text Color:
+- White (#ffffff)
+
+----------------------------------------
+Text Properties
+----------------------------------------
+Main Heading:
+- Center aligned
+
+Subtitle Text:
+- Reduced opacity for hierarchy
+
+Identity Text:
+-
+- Accent color for emphasis
+
+
+
+
+

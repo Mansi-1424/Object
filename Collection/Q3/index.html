@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Interview Panel Assignment</title>
+
+<!-- 🔒 UI & CSS UNCHANGED -->
+<style>
+/* (CSS IS EXACTLY SAME AS PREVIOUS WORKING FILE — NOT TOUCHED) */
+:root {
+  --bg-main: #020617;
+  --bg-soft: #0f172a;
+  --glass: rgba(255,255,255,0.08);
+  --border: rgba(255,255,255,0.18);
+  --accent: linear-gradient(135deg,#38bdf8,#6366f1);
+  --danger: #ef4444;
+  --success: #22c55e;
+  --text: #e5e7eb;
+}
+* { 
+  box-sizing: border-box; 
+  font-family: Inter, system-ui, sans-serif; 
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, var(--bg-soft), var(--bg-main));
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  color: var(--text);
+  padding: 20px;
+}
+.app {
+  width: 1100px; 
+  max-width: 96%; 
+  padding: 32px;
+  border-radius: 24px; 
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  box-shadow: 0 60px 140px rgba(0,0,0,0.75);
+}
+.header { 
+  text-align: center; 
+  margin-bottom: 28px; 
+}
+.header h1 {
+  font-size: 30px;
+  background: var(--accent);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 8px;
+}
+.header p { 
+  opacity: 0.75; 
+  font-size: 14px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1.4fr 1.3fr;
+  gap: 22px;
+}
+.panel {
+  background: rgba(0,0,0,0.42);
+  border-radius: 18px;
+  padding: 22px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+.panel h3 {
+  margin-bottom: 16px;
+  color: #e5e7eb;
+  font-size: 18px;
+}
+input, select {
+  width: 100%; 
+  padding: 14px 16px;
+  border-radius: 14px; 
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.06);
+  color: white; 
+  outline: none;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+input:focus, select:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+button {
+  padding: 15px;
+  border-radius: 16px; 
+  border: none;
+  background: var(--accent);
+  color: #020617; 
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
+}
+.assignment {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.assignment-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.assignment-info span {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.4;
+}
+.assignment-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+.assignment-actions button {
+  width: auto; 
+  padding: 8px 16px;
+  background: rgba(255,255,255,0.14);
+  color: white;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 0;
+}
+.assignment-actions button:first-child {
+  background: rgba(56, 189, 248, 0.2);
+}
+.assignment-actions button:last-child {
+  background: rgba(239, 68, 68, 0.2);
+}
+.log { 
+  max-height: 230px; 
+  overflow-y: auto;
+  flex: 1;
+}
+.log-entry { 
+  padding: 10px; 
+  border-radius: 10px; 
+  margin-bottom: 8px; 
+  font-size: 13px;
+}
+.ok { 
+  background: rgba(34,197,94,0.18); 
+  border-left: 4px solid var(--success); 
+}
+.fail { 
+  background: rgba(239,68,68,0.18); 
+  border-left: 4px solid var(--danger); 
+}
+
+/* Hidden employee ID field */
+#employeeIdInput {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  pointer-events: none;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .app {
+    padding: 24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+  <div class="header">
+    <h1>Interview Panel Assignment</h1>
+    <p>Smart scheduling with real-time validation</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- Input Panel -->
+    <div class="panel">
+      <h3>Create Assignment</h3>
+      <input id="candidateInput" placeholder="Candidate Name">
+      <input id="interviewerInput" placeholder="Interviewer Name">
+      <!-- Hidden Employee ID Input (not visible on UI) -->
+      <input id="employeeIdInput" placeholder="Employee ID (Hidden)">
+      <select id="slotInput">
+        <option value="">Select Time Slot</option>
+        <option>09:00 - 10:00</option>
+        <option>10:00 - 11:00</option>
+        <option>11:00 - 12:00</option>
+        <option>14:00 - 15:00</option>
+        <option>15:00 - 16:00</option>
+        <option>16:00 - 17:00</option>
+      </select>
+      <button onclick="submitAssignment()">Save Assignment</button>
+    </div>
+
+    <!-- Assignments Panel -->
+    <div class="panel">
+      <h3>Current Assignments</h3>
+      <div id="assignmentList"></div>
+    </div>
+
+    <!-- Activity Log Panel -->
+    <div class="panel">
+      <h3>Activity Log</h3>
+      <div id="activityLog" class="log"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ===================== HIDDEN EMPLOYEE LOGIC ===================== */
+
+// interviewerName → employeeID (HIDDEN)
+const interviewerDirectory = new Map();
+
+// employeeID → Set(timeSlots)
+const employeeSchedule = new Map();
+
+// candidate → Set(employeeID)
+const candidateMeetings = new Map();
+
+let assignments = [];
+let editingIndex = null;
+
+/* Generate hidden employee ID */
+function getEmployeeId(interviewerName) {
+  if (!interviewerDirectory.has(interviewerName)) {
+    interviewerDirectory.set(
+      interviewerName,
+      "EMP-" + Math.random().toString(36).slice(2, 8).toUpperCase()
+    );
+  }
+  return interviewerDirectory.get(interviewerName);
+}
+
+/* ===================== SUBMIT ===================== */
+function submitAssignment() {
+  const candidate = document.getElementById('candidateInput').value.trim();
+  const interviewer = document.getElementById('interviewerInput').value.trim();
+  const slot = document.getElementById('slotInput').value;
+  
+  // Get employee ID from hidden input or generate it
+  const employeeIdInput = document.getElementById('employeeIdInput');
+  let empId = employeeIdInput.value.trim();
+  
+  if (!empId) {
+    // If no employee ID provided, generate one
+    empId = getEmployeeId(interviewer);
+    // Optionally store it in hidden field for consistency
+    employeeIdInput.value = empId;
+  }
+
+  if (!candidate || !interviewer || !slot) {
+    return log("All fields are required", false);
+  }
+
+  if (editingIndex !== null) {
+    removeAssignment(editingIndex, false);
+  }
+
+  // Initialize data structures if needed
+  if (!candidateMeetings.has(candidate)) {
+    candidateMeetings.set(candidate, new Set());
+  }
+  if (!employeeSchedule.has(empId)) {
+    employeeSchedule.set(empId, new Set());
+  }
+
+  // Validation checks
+  if (candidateMeetings.get(candidate).has(empId)) {
+    return log("Candidate already met this interviewer", false);
+  }
+
+  if (employeeSchedule.get(empId).has(slot)) {
+    return log("Interviewer not available at this time", false);
+  }
+
+  // Add to data structures
+  candidateMeetings.get(candidate).add(empId);
+  employeeSchedule.get(empId).add(slot);
+
+  // Add to assignments array
+  assignments.push({ 
+    candidate, 
+    interviewer, 
+    slot, 
+    empId // Store employee ID but don't display it
+  });
+  
+  editingIndex = null;
+  clearInputs();
+  render();
+  log("Assignment saved successfully", true);
+}
+
+/* ===================== RENDER ===================== */
+function render() {
+  const assignmentList = document.getElementById('assignmentList');
+  assignmentList.innerHTML = "";
+  
+  if (assignments.length === 0) {
+    assignmentList.innerHTML = `
+      <div class="assignment">
+        <div class="assignment-info">
+          <span style="opacity: 0.7; font-style: italic;">No assignments yet</span>
+        </div>
+      </div>
+    `;
+    return;
+  }
+  
+  assignments.forEach((a, i) => {
+    const div = document.createElement("div");
+    div.className = "assignment";
+    div.innerHTML = `
+      <div class="assignment-info">
+        <span><strong>Candidate:</strong> ${a.candidate}</span>
+        <span><strong>Interviewer:</strong> ${a.interviewer}</span>
+        <span><strong>Time Slot:</strong> ${a.slot}</span>
+      </div>
+      <div class="assignment-actions">
+        <button onclick="edit(${i})">Edit</button>
+        <button onclick="removeAssignment(${i})">Remove</button>
+      </div>`;
+    assignmentList.appendChild(div);
+  });
+}
+
+/* ===================== EDIT ===================== */
+function edit(i) {
+  const a = assignments[i];
+  document.getElementById('candidateInput').value = a.candidate;
+  document.getElementById('interviewerInput').value = a.interviewer;
+  document.getElementById('slotInput').value = a.slot;
+  document.getElementById('employeeIdInput').value = a.empId;
+  editingIndex = i;
+  
+  // Scroll to input panel
+  document.getElementById('candidateInput').focus();
+}
+
+/* ===================== REMOVE ===================== */
+function removeAssignment(i, logAction = true) {
+  const a = assignments[i];
+  
+  // Clean up data structures
+  if (candidateMeetings.has(a.candidate)) {
+    candidateMeetings.get(a.candidate).delete(a.empId);
+  }
+  if (employeeSchedule.has(a.empId)) {
+    employeeSchedule.get(a.empId).delete(a.slot);
+  }
+  
+  assignments.splice(i, 1);
+  render();
+  
+  if (logAction) {
+    log("Assignment removed", true);
+  }
+  
+  // Reset editing index if we're removing the item being edited
+  if (editingIndex === i) {
+    editingIndex = null;
+    clearInputs();
+  }
+}
+
+/* ===================== UTILS ===================== */
+function clearInputs() {
+  document.getElementById('candidateInput').value = "";
+  document.getElementById('interviewerInput').value = "";
+  document.getElementById('employeeIdInput').value = "";
+  document.getElementById('slotInput').value = "";
+  editingIndex = null;
+}
+
+function log(msg, ok) {
+  const activityLog = document.getElementById('activityLog');
+  const div = document.createElement("div");
+  div.className = `log-entry ${ok ? "ok" : "fail"}`;
+  div.textContent = `[${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}] ${msg}`;
+  activityLog.prepend(div);
+  
+  // Keep log at reasonable size
+  if (activityLog.children.length > 20) {
+    activityLog.removeChild(activityLog.lastChild);
+  }
+}
+
+// Initialize with some demo data
+window.onload = function() {
+  // Add a couple of demo assignments
+  assignments = [
+    { candidate: "John Doe", interviewer: "Sarah Smith", slot: "09:00 - 10:00", empId: getEmployeeId("Sarah Smith") },
+    { candidate: "Jane Smith", interviewer: "Mike Johnson", slot: "10:00 - 11:00", empId: getEmployeeId("Mike Johnson") }
+  ];
+  
+  // Add to data structures
+  assignments.forEach(a => {
+    if (!candidateMeetings.has(a.candidate)) {
+      candidateMeetings.set(a.candidate, new Set());
+    }
+    if (!employeeSchedule.has(a.empId)) {
+      employeeSchedule.set(a.empId, new Set());
+    }
+    candidateMeetings.get(a.candidate).add(a.empId);
+    employeeSchedule.get(a.empId).add(a.slot);
+  });
+  
+  render();
+  log("System initialized with demo data", true);
+};
+</script>
+
+</body>
+</html>

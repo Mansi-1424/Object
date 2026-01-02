@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Event Registration System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-calendar-alt"></i>
+                <div>
+                    <h1>Smart Event Registration</h1>
+                    <p>Advanced event management with unique user tracking</p>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-value" id="total-events">0</span>
+                    <span class="stat-label">Total Events</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="total-users">0</span>
+                    <span class="stat-label">Unique Users</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="total-registrations">0</span>
+                    <span class="stat-label">Registrations</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Controls Section -->
+        <section class="controls">
+            <div class="tab-container">
+                <button class="tab active" data-tab="create-event">
+                    <i class="fas fa-plus-circle"></i> Create Event
+                </button>
+                <button class="tab" data-tab="register-user">
+                    <i class="fas fa-user-plus"></i> Register User(s)
+                </button>
+                <button class="tab" data-tab="bulk-actions">
+                    <i class="fas fa-bolt"></i> Quick Actions
+                </button>
+            </div>
+
+            <!-- Create Event Tab -->
+            <div id="create-event" class="tab-content active">
+                <div class="form-group">
+                    <label for="eventId"><i class="fas fa-tag"></i> Event ID</label>
+                    <input type="text" id="eventId" placeholder="Enter unique ID (e.g., E001)">
+                </div>
+                <div class="form-group">
+                    <label for="eventName"><i class="fas fa-calendar"></i> Event Name</label>
+                    <input type="text" id="eventName" placeholder="Enter event name (e.g., Tech Conference)">
+                </div>
+                <button class="btn btn-primary" id="createEventBtn">
+                    <i class="fas fa-check-circle"></i> Create Event
+                </button>
+            </div>
+
+            <!-- Register User Tab -->
+            <div id="register-user" class="tab-content">
+                <div class="form-group">
+                    <label for="selectEvent"><i class="fas fa-calendar-check"></i> Select Event</label>
+                    <select id="selectEvent" class="event-select">
+                        <option value="">-- Select an event --</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> User Emails (Add multiple)</label>
+                    <div class="email-inputs" id="emailInputsContainer">
+                        <div class="email-input-item">
+                            <input type="email" class="email-input" placeholder="Enter user email (e.g., john@example.com)">
+                            <button class="remove-email-btn" onclick="removeEmailInput(this)">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="add-email-btn" id="addEmailBtn">
+                        <i class="fas fa-plus"></i> Add Another Email
+                    </button>
+                </div>
+                <button class="btn btn-success" id="registerUserBtn">
+                    <i class="fas fa-user-check"></i> Register All Users
+                </button>
+            </div>
+
+            <!-- Bulk Actions Tab -->
+            <div id="bulk-actions" class="tab-content">
+                <div class="quick-actions">
+                    <button class="quick-action-btn" id="generateDemoDataBtn">
+                        <i class="fas fa-magic"></i> Generate Demo Data
+                    </button>
+                    <button class="quick-action-btn" id="exportDataBtn">
+                        <i class="fas fa-download"></i> Export Data
+                    </button>
+                    <button class="quick-action-btn" id="importDataBtn">
+                        <i class="fas fa-upload"></i> Import Data
+                    </button>
+                    <button class="quick-action-btn" id="clearEventBtn">
+                        <i class="fas fa-trash"></i> Clear Selected Event
+                    </button>
+                </div>
+                <div style="margin-top: 20px;">
+                    <button class="btn btn-danger" id="clearDataBtn">
+                        <i class="fas fa-trash-alt"></i> Clear All Data
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Panel -->
+        <section class="events-panel">
+            <div class="panel-header">
+                <h2 class="panel-title"><i class="fas fa-list-alt"></i> Events & Registrations</h2>
+                <span class="event-count" id="events-count">0 Events</span>
+            </div>
+            <div class="events-list" id="eventsList">
+                <!-- Events will be dynamically added here -->
+                <div class="empty-state" id="emptyEvents">
+                    <i class="fas fa-calendar-plus"></i>
+                    <p>No events created yet. Create your first event to get started!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Panel -->
+        <section class="analytics-panel">
+            <div class="panel-header">
+                <h2 class="panel-title"><i class="fas fa-chart-bar"></i> Analytics & Insights</h2>
+                <div class="panel-actions">
+                    <button class="action-btn refresh-analytics" id="refreshAnalyticsBtn">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                </div>
+            </div>
+            <div class="analytics-content">
+                <div class="metric-card">
+                    <h3 class="metric-title"><i class="fas fa-chart-line"></i> Registrations per Event</h3>
+                    <div id="registrationsPerEvent">
+                        <div class="empty-state">
+                            <i class="fas fa-chart-pie"></i>
+                            <p>No registration data available yet.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <h3 class="metric-title"><i class="fas fa-users"></i> Users Attending Multiple Events</h3>
+                    <div class="multi-event-users" id="multiEventUsers">
+                        <div class="empty-state">
+                            <i class="fas fa-user-friends"></i>
+                            <p>No users attending multiple events yet.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Notification System -->
+    <div class="notification" id="notification"></div>
+
+    <!-- Import Data Modal (hidden initially) -->
+    <div id="importModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center;">
+        <div style="background: white; padding: 30px; border-radius: var(--border-radius); max-width: 500px; width: 90%;">
+            <h3 style="margin-bottom: 20px; color: var(--dark-color);"><i class="fas fa-upload"></i> Import Event Data</h3>
+            <textarea id="importDataText" placeholder="Paste JSON data here..." style="width: 100%; height: 200px; padding: 15px; border: 2px solid #e2e8f0; border-radius: var(--border-radius); font-family: monospace; resize: vertical;"></textarea>
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <button class="btn btn-success" id="confirmImportBtn">Import</button>
+                <button class="btn btn-secondary" id="cancelImportBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

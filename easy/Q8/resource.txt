@@ -1,0 +1,57 @@
+RESOURCE DETAILS – Compensation Intelligence System
+
+----------------------------------------
+Font Family
+----------------------------------------
+Primary Font:
+- Inter
+- System UI fallback
+- Sans-serif
+
+---------------------------------------
+Color Palette
+----------------------------------------
+Background Gradient:
+- #0f2027 (Dark Teal)
+- #203a43 (Deep Blue)
+- #2c5364 (Muted Cyan)
+
+System Panel Background:
+- rgba(255, 255, 255, 0.16)
+- Glassmorphism effect with blur
+
+Result Panel Background:
+- rgba(0, 0, 0, 0.35)
+
+----------------------------------------
+Accent Colors
+----------------------------------------
+Primary Action Button:
+- Green: #43cea2
+- Blue: #185a9d
+
+Text Color:
+- White (#ffffff)
+
+----------------------------------------
+Text Properties
+----------------------------------------
+Main Heading:
+- Center aligned
+
+Subtitle Text:
+- Slight opacity for hierarchy
+
+Label Text:
+- Clear spacing for readability
+
+Input Text:
+- High contrast input fields
+
+
+
+
+
+
+
+

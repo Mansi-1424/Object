@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Secure DTO Inspector</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="panel input-panel">
+      <h1><i class="fas fa-shield-alt"></i> Secure DTO Inspector</h1>
+      
+      <div class="input-group">
+        <label for="userId"><i class="fas fa-id-card"></i> User ID</label>
+        <input type="number" id="userId" value="42" min="1">
+      </div>
+      
+      <div class="input-group">
+        <label for="username"><i class="fas fa-user"></i> Username</label>
+        <input type="text" id="username" value="secure_user">
+      </div>
+      
+      <div class="input-group">
+        <label for="userRole"><i class="fas fa-user-tag"></i> Role</label>
+        <select id="userRole">
+          <option value="admin">Admin</option>
+          <option value="editor">Editor</option>
+          <option value="viewer">Viewer</option>
+          <option value="guest">Guest</option>
+        </select>
+      </div>
+      
+      <div class="button-group">
+        <button id="load">
+          <i class="fas fa-download"></i> Load DTO
+        </button>
+        <button id="tamper">
+          <i class="fas fa-exclamation-triangle"></i> Try Tamper
+        </button>
+        <button id="reset">
+          <i class="fas fa-redo"></i> Reset
+        </button>
+      </div>
+      
+      <div class="status-bar">
+        <div class="status-item">
+          <div class="status-value" id="propertyCount">0</div>
+          <div class="status-label">Properties</div>
+        </div>
+        <div class="status-item">
+          <div class="status-value" id="enumCount">0</div>
+          <div class="status-label">Enumerable</div>
+        </div>
+        <div class="status-item">
+          <div class="status-value" id="status">-</div>
+          <div class="status-label">Status</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel output-panel">
+      <h2><i class="fas fa-search"></i> DTO Analysis</h2>
+      
+      <div id="output" class="output">
+        <!-- Content will be populated by JavaScript -->
+      </div>
+      
+      <div id="errorMessage" class="error" style="display: none;"></div>
+    </div>
+  </div>
+
+
+
+  <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+Primary Font: 'Poppins' (Google Fonts)
+  - Weights: 300 (Light), 400 (Regular), 500 (Medium), 600 (Semi-bold), 700 (Bold)
+  - Usage: Body text, labels, buttons, form elements
+
+Accent Font: 'Montserrat' (Google Fonts)
+  - Weights: 800 (Extra-bold), 900 (Black)
+  - Usage: Main headers, logo text, important labels
+
+Fallback Fonts: system-ui, -apple-system, BlinkMacSystemFont
+
+Font Size Scale:
+--text-xs: 0.75rem;      /* 12px - Small labels, hints */
+--text-sm: 0.875rem;     /* 14px - Body text, captions */
+--text-base: 1rem;       /* 16px - Default body text */
+--text-lg: 1.125rem;     /* 18px - Card subtitles */
+--text-xl: 1.25rem;      /* 20px - Section headers */
+--text-2xl: 1.5rem;      /* 24px - Card headers */
+--text-3xl: 1.875rem;    /* 30px - Main headers */
+--text-4xl: 2rem;        /* 32px - Logo/hero text */
+
+Font Weight Usage:
+Light (300):     Input placeholders, subtle text
+Regular (400):   Body text, labels, descriptions
+Medium (500):    Input labels, button text
+Semi-bold (600): Card headers, important labels
+Bold (700):      User names, statistics
+Extra-bold (800): Main application title
+Black (900):     Gradient text effects
+
+
+Color Palette System
+Primary Colors:
+
+Dark Background: #0f172a
+  - Usage: Main background, dark overlays
+  - RGB: rgb(15, 23, 42)
+
+Card Background: rgba(255, 255, 255, 0.08)
+  - Usage: Glass morphism cards
+  - Alpha: 8% opacity white
+
+Card Border: rgba(255, 255, 255, 0.1)
+  - Usage: Card outlines, separators
+  - Alpha: 10% opacity white
+
+  Text Colors:
+  Primary Text: #f8fafc
+  - Hex: #f8fafc
+  - Usage: Main text, headings
+  - Contrast: 12:1 on dark background
+
+Secondary Text: #94a3b8
+  - Hex: #94a3b8
+  - Usage: Subtitles, hints, disabled text
+  - Contrast: 7:1 on dark background
+
+Success Text: #10b981
+  - Hex: #10b981
+  - Usage: Validation success, positive indicators
+  - Contrast: 4.5:1 minimum
+
+Error Text: #ef4444
+  - Hex: #ef4444
+  - Usage: Validation errors, warnings
+  - Contrast: 4.5:1 minimum

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Activity Analyzer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-chart-line"></i> User Activity Analyzer</h1>
+        </header>
+
+        <div class="methods-grid">
+            <div class="method-card" id="filter-card">
+                <h3><span class="method-icon"><i class="fas fa-filter"></i></span>  Active Users</h3>
+                <p class="method-desc">Filter the array to get only active users (active: true).</p>
+                <div class="result">
+                    Active Users: <span class="result-highlight" id="filter-result">0</span>
+                </div>
+            </div>
+
+            <div class="method-card" id="map-card">
+                <h3><span class="method-icon"><i class="fas fa-map"></i></span>  Total Actions Per User</h3>
+                <p class="method-desc">Extract total number of actions for each user.</p>
+                <div class="result">
+                    Actions per user: <span class="result-highlight" id="map-result">0</span>
+                </div>
+            </div>
+
+            <div class="method-card" id="reduce-card">
+                <h3><span class="method-icon"><i class="fas fa-calculator"></i></span> Total Actions</h3>
+                <p class="method-desc">Calculate total actions across all users.</p>
+                <div class="result">
+                    Total Actions: <span class="result-highlight" id="reduce-result">0</span>
+                </div>
+            </div>
+
+            <div class="method-card" id="some-card">
+                <h3><span class="method-icon"><i class="fas fa-question-circle"></i></span>  User Never Logged Out</h3>
+                <p class="method-desc">Check if any user has never logged out (missing "logout" action).</p>
+                <div class="result">
+                    Result: <span class="result-highlight" id="some-result">Checking...</span>
+                </div>
+            </div>
+
+            <div class="method-card" id="every-card">
+                <h3><span class="method-icon"><i class="fas fa-check-circle"></i></span>  Active User Has Actions</h3>
+                <p class="method-desc">Check if all active users performed at least one action.</p>
+                <div class="result">
+                    Result: <span class="result-highlight" id="every-result">Checking...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="users-section">
+            <h2 class="section-title"><i class="fas fa-users"></i> User Activity Data</h2>
+            <div class="controls">
+                <button class="btn btn-primary" id="generateData">
+                    <i class="fas fa-random"></i> Generate New Data
+                </button>
+                <button class="btn btn-secondary" id="analyzeData">
+                    <i class="fas fa-play"></i> Run Analysis
+                </button>
+            </div>
+            <div class="user-cards" id="userCards"></div>
+        </div>
+
+        <div class="footer">
+            <!-- <p>User Activity Analyzer | Demonstrating JavaScript Array Methods: filter, map, reduce, some, every</p> -->
+        </div>
+    </div>
+<script src="./script.js"></script>
+</body>
+</html>

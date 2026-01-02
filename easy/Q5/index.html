@@ -2,23 +2,179 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>User Login System</title>
-    <link rel="stylesheet" href="./style.css">
+    <title>🏫 School Student Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
-    <div class="wrapper">
-        <h1>User Login System</h1>
-
-        <div class="form-box">
-            <input type="text" id="username" placeholder="Enter Username">
-            <input type="text" id="role" placeholder="Enter Role (Admin/User)">
-            <button id="addUserBtn">Add User</button>
+    <div class="container">
+        <h1 class="main-title">
+            <i class="fas fa-school"></i>
+            Bright Future School
+            <span class="subtitle">Student Management System</span>
+        </h1>
+        
+        <div class="dashboard">
+            <!-- Student Profile Section -->
+            <div class="profile-section">
+                <h2><i class="fas fa-user-graduate"></i> Student Profile</h2>
+                <div class="profile-card">
+                    <div class="student-avatar" id="studentAvatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 id="studentName">Student Name</h3>
+                    <div class="student-info">
+                        <div class="info-row">
+                            <span class="info-label"><i class="fas fa-id-card"></i> Roll No:</span>
+                            <span class="info-value" id="rollNumber">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label"><i class="fas fa-graduation-cap"></i> Grade:</span>
+                            <span class="info-value grade-badge" id="studentGrade">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label"><i class="fas fa-birthday-cake"></i> Age:</span>
+                            <span class="info-value" id="studentAge">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label"><i class="fas fa-heart"></i> Status:</span>
+                            <span class="info-value status-badge" id="studentStatus">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Marks Section -->
+            <div class="marks-section">
+                <h2><i class="fas fa-chart-line"></i> Academic Performance</h2>
+                <div class="marks-card">
+                    <div class="marks-header">
+                        <h4>Subject-wise Marks (Out of 100)</h4>
+                        <div class="overall-grade" id="overallGrade">Grade: -</div>
+                    </div>
+                    <div class="marks-grid" id="marksGrid">
+                        <!-- Marks will be dynamically added here -->
+                    </div>
+                    <div class="marks-footer">
+                        <div class="total-marks">
+                            <span>Total:</span>
+                            <span class="total-value" id="totalMarks">0</span>
+                        </div>
+                        <div class="percentage">
+                            <span>Percentage:</span>
+                            <span class="percentage-value" id="percentage">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div id="usersContainer"></div>
+        
+        <!-- Controls Section -->
+        <div class="controls-section">
+            <h2><i class="fas fa-cogs"></i> Student Controls</h2>
+            
+            <div class="controls-grid">
+                <div class="control-group">
+                    <label for="studentSelect">
+                        <i class="fas fa-users"></i> Select Student
+                    </label>
+                    <select id="studentSelect" class="select-control">
+                        <option value="john">John Smith</option>
+                        <option value="sarah">Sarah Johnson</option>
+                        <option value="michael">Michael Brown</option>
+                        <option value="emma">Emma Wilson</option>
+                        <option value="david">David Lee</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="actionSelect">
+                        <i class="fas fa-tasks"></i> Select Action
+                    </label>
+                    <select id="actionSelect" class="select-control">
+                        <option value="calculateGrade">Calculate Grade</option>
+                        <option value="promoteGrade">Promote to Next Grade</option>
+                        <option value="updateAttendance">Update Attendance</option>
+                        <option value="addSubject">Add New Subject</option>
+                        <option value="generateReport">Generate Report Card</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <button class="action-btn calculate-btn" id="executeAction">
+                    <i class="fas fa-play"></i>
+                    Execute Action
+                </button>
+                <button class="action-btn reset-btn" id="resetData">
+                    <i class="fas fa-redo"></i>
+                    Reset Data
+                </button>
+                <button class="action-btn info-btn" id="showFullInfo">
+                    <i class="fas fa-file-alt"></i>
+                    Show Full Info
+                </button>
+            </div>
+        </div>
+        
+        <!-- Activity Log -->
+        <div class="activity-section">
+            <h2><i class="fas fa-clipboard-list"></i> Activity Log</h2>
+            <div class="activity-container" id="activityLog">
+                <div class="activity-entry welcome">
+                    <span class="activity-time">Today</span>
+                    <span class="activity-message">
+                        <i class="fas fa-info-circle"></i>
+                        Welcome to Student Management System
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <h2><i class="fas fa-chart-pie"></i> Class Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="totalStudents">0</div>
+                        <div class="stat-label">Total Students</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="avgPercentage">0%</div>
+                        <div class="stat-label">Average %</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="topPerformer">-</div>
+                        <div class="stat-label">Top Student</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="totalSubjects">0</div>
+                        <div class="stat-label">Subjects</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <script src="./script.js"></script>
+    
+    <script src="script.js"></script>
 </body>
 </html>
